@@ -8,7 +8,7 @@ Anno Accademico: 2023/2024
 
 # Lab-1
 
-Repository containing exercises from 'Laboratory 1' course at the University of Pisa.
+Repository containing exercises from 'Laboratory 1' class at the University of Pisa.
 
 Major: Computer Science
 
