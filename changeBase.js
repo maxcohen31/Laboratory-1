@@ -20,4 +20,4 @@ function change_base(n, base)
     return result
 }
 
-console.log(change_base(8, 2))
+console.log(change_base(0o01000000, 10))
