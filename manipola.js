@@ -21,30 +21,20 @@
 
 function manipola(arr, f, a, n)
 {   
-    let newArr = [];
-    let sum = 0;
-    let i = 0;
-
-    if(arr.length === 0)
+    let result = [];
+        
+    // copy element into result
+    for(let i of arr)
     {
-        return [];
+        result.push(i);
     }
 
-    while(i <= n)
+    for(let i = 0; i < n; i++)
     {
-        if(f(arr[i]))
-        {
-            newArr.push(a(arr[i]));
-        }
-        i++;
+        result = arr.map(a).filter(f);
     }
-    
-    for(let i = 0; i < newArr.length; i++)
-    {
-        sum += newArr[i];
-    }
-    return [sum];
 
+    return result;
 }
 
 
@@ -53,7 +43,7 @@ function manipola(arr, f, a, n)
 let filtro = (x) => x % 2 != 0 || x > 4;
 let filtro2 = (x) => x % 2 == 0 || x > 4;
 let aggiorna = (x) => x + 1;
-//console.log(manipola([1, 2, 3, 4], filtro, aggiorna, 2));
-//console.log(manipola([1, 2, 3, 4], filtro2, aggiorna, 2));
+console.log(manipola([1, 2, 3, 4], filtro, aggiorna, 2));
+console.log(manipola([1, 2, 3, 4], filtro2, aggiorna, 2));
 
 
