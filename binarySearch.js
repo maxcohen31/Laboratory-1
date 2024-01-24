@@ -21,13 +21,13 @@ function binary_search(arr, target)
         {
             return mid;
         }
-        // If target is to the right of our mid then increase left pointer
+        // If target is in the right of our mid then increase left pointer
         if(arr[mid] < target)
         {
             start = mid + 1;
         }
 
-        // If target is to the left of our mid then decrease right pointer
+        // If target is in the left of our mid then decrease right pointer
         if(arr[mid] > target)
         {
             end = mid - 1;
