@@ -1,45 +1,25 @@
 /*
-    Si scriva una funzione tagliaAlberi(T), che prende come parametro un albero binario T 
-    (i cui nodi sono implementati come visto a lezione come oggetti con chiavi val, sx e dx). 
-    La funzione taglia i sottoalberi 'secchi'. Un sottoalbero è secco se il valore nella radice del sottoalbero è < 0. 
-    Il taglio avviene eliminando il contenuto del nodo secco 
-    (viene eliminato il contenuto, non il nodo: quindi resta un { }) 
-    - le proprietà val, sx e dx (si veda l'esempio).
-
-    La funzione non deve restituire nulla (no return).
-
-
-
-    Esempio:
-
-    t={val:20, sx:{val:19, sx:{val:8}, dx:{val:7, sx:{val:9} } }, dx:{val:-3, sx:{val:-8},dx:{val:7}}}
-
-    Dopo la chiamata a tagliaAlberi(t), t contiene {val:20, sx:{val:19, sx:{val:8}, dx:{val:7, sx:{val:9} } }, dx:{}}  
+    Sia T un albero k-ario e v un valore valido per un node dell'albero.
+    Si scriva una funzione Js tagliaRami(T, v) che modifichi T tagliando tutti i 
+    rami(attenzione: non la radice!) che hanno valore val divisore di v.
+    L'operazione di taglio di un nodo elimina dall'albero il nodo in questione,
+    e l'eventuale sotto-albero radicato nel nodo.
 */
 
-
-function tagliaAlberi(T)
+function tagliaRami(T,v)
 {
-    if(!T)
+    for(let i = 0; i < T.figli.length; i++)
     {
-        return;
+        if(v%T.figli[i].val == 0)
+        {
+            T.figli.splice(i--, 1);
+        }
+        else
+        {
+            tagliaRami(T.figli[i], v);
+        }
     }
-    // Base case: leaf 
-    if (T.val < 0) 
-    {
-        // Taglia il sottoalbero secco eliminando il contenuto del nodo
-        delete T.val;
-        delete T.sx;
-        delete T.dx
-    }
-
-    // Recursion
-    tagliaAlberi(T.sx);
-    tagliaAlberi(T.dx) 
-
 }
 
-t={val:20, sx:{val:19, sx:{val:8}, dx:{val:7, sx:{val:9} } }, dx:{val:-3, sx:{val:-8},dx:{val:7}}}
-
-console.log(tagliaAlberi(t));
-console.log(t)
+let t ={val:12, figli:[{val: 8, figli: [{val: 2},{val: 2}, {val: 2, figli:[{val:4}]}]}]};
+console.log(tagliaRami(t, 3))
