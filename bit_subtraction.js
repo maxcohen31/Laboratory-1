@@ -6,7 +6,7 @@
 function bit_sub(a, b)
 {
     let result = ~b 
-    // second complemet
+    // two's complement 
     result = result + 1
     // return subtraction
     return a + result
