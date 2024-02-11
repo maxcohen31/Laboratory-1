@@ -50,7 +50,18 @@ function encode(bitMap, base)
     return hexResult
 }   
 
-
+// Proposed solution
+function bitmap(b){
+  let a = [];
+  for(let i=0; i<b.length; i++){
+    let codifica = 0;
+    for(let j=0; j<b[i].length; j++){
+      codifica += b[i][j]*(2**(b[i].length-1-j))
+    }
+    a.push(codifica);
+  }
+  return a;
+}
 
 let b = [
     [0, 0, 0, 1, 1, 0, 0, 0],
@@ -64,6 +75,6 @@ let b = [
 ]
 
 console.log(encode(b, 2));
-
+console.log(bitmap(b));
 
 
