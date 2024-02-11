@@ -31,7 +31,7 @@ function manipola(arr, f, a, n)
 
     for(let i = 0; i < n; i++)
     {
-        result = arr.map(a).filter(f);
+        result = result.filter(f).map(a);
     }
 
     return result;
