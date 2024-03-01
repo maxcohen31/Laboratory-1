@@ -58,6 +58,24 @@ function granchio(T, k)
 
 }
 
+// soluzione più efficiente
+function granchio(t,k) {
+  if (!t)
+    return []
+  else {
+    let arr = granchio(t.dx,k)
+    k = k - arr.length
+    if (k > 0) {
+      arr.push(t.val)
+      k--
+    }
+    if (k > 0) {
+      arr.push(...granchio(t.sx,k))
+    }
+    return arr
+  }
+}
+
 let T = {val:7,sx:{val: 4, sx: {val: 3}, dx: {val:12, sx: {val: 4, dx:{val:8}, sx:{val: 2}}}}, dx:{val: 11, dx: {val: 18}, sx: {val:3, sx: {val: 2}}}}
 
 
