@@ -55,6 +55,21 @@ function predFilter(L, pred)
 }
 
 
+// Soluzione Ricorsiva
+function predFilterRec(list, pred)
+{
+    if (list.next)
+    {
+        if (pred(list.next.val))
+        {
+            list.next = list.next.next;
+        }
+        else
+        {
+            predFilterRec(list.next, pred);
+        }
+    }
+}
 
 let L={next: 
     {val: 3, next:
