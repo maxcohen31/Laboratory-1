@@ -56,7 +56,28 @@ class Motoscafo extends Barca {
     }
 }
 
-function trovaBarca(barche) {
+function trovaBarca(barche)
+{
+    
+    let boats = barche.filter((a) => (a instanceof Barca));
+    [result, ...elements] = boats;
+    
+    for (let i = 0; i < elements.length; i++)
+    {
+        if (result.lunghezza < elements[i].lunghezza)
+        {
+            result = elements[i];
+        }
+        else
+        {
+            return result.nome;
+        }
+    }
+    return  elements.length > 0 ? result.nome : undefined;
+}
+
+// Soluzione proposta
+function trovaBarca2(barche) {
   let laBarca = undefined
   for (b of barche) {
     if (b instanceof Barca) {
