@@ -59,8 +59,9 @@ class Stadio
         switch(s)
         {
             case "casa":
-                if (this.postiCasa[i] != undefined && i < this.casa)
+                if (this.postiCasa[i] == undefined && i < this.casa)
                 {
+                    this.postiCasa[i] = 1;
                     return true;
                 }
                 else
@@ -68,8 +69,9 @@ class Stadio
                     return false;
                 }
             case "ospiti":
-                if (this.postiOspiti[i] != undefined && i < this.ospiti)
+                if (this.postiOspiti[i] == undefined && i < this.ospiti)
                 {
+                    this.postiOspiti[i] = 1;
                     return true;
                 }
                 else
@@ -127,7 +129,11 @@ class Stadio
 
     is_empty()
     {
-        return (this.posti_occupati("casa") == 0) && (this.posti_occupati("ospiti") == 0);
+        if ((this.posti_occupati("casa") == 0) && (this.posti_occupati("ospiti") == 0))
+        {
+            return true;
+        }
+        return false;
     }
 
 
