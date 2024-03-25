@@ -47,30 +47,53 @@ class InsufficientMoney extends BalanceError{ ; }
 
 class ContoBancario
 {
+    saldo
+    masismale;
+
     constructor(saldoIniziale, massimale)
     {
-        if (this.saldoIniziale < 0 || this.massimale < 0)
+        if (saldoIniziale < 0)
         {
             throw new InvalidMoney("value must be positive");
         }
-        this.saldoIniziale = saldoIniziale;
+        
+        this.saldo = saldoIniziale;
         this.massimale = massimale;
+        
     }
 
     deposito(valore)
     {
-        if (valore < 0) { throw new InvalidMoney("Value must be positive"); }
-        if (valore > this.massimale) { throw new ExcessiveMoney("Too much monet passed"); }
-        return this.saldoIniziale + valore;
+        if (valore < 0) 
+        { 
+            throw new InvalidMoney(); 
+        }
+        else if (this.saldo + valore > this.massimale) 
+        { 
+            throw new ExcessiveMoney(); 
+        }
+        else 
+        {
+            this.saldo += valore; 
+        }
     }
-
-    prelievo(valore)
+    prelievo(valore) 
     {
-        if (valore > this.saldoIniziale) { throw new InsufficientMoney("Insufficient money"); } 
-        if (valore < 0) { throw new InvalidMoney("Value must be positive"); }
-        return this.saldoIniziale - valore;
-    }
+        if (valore < 0) 
+        {
+            throw new InvalidMoney();
+        } 
+        else if (this.saldo - valore < 0) 
+        {
+            throw new InsufficientMoney();
+        } 
+        else 
+        {
+            this.saldo -= valore;
+        }
+  }
 }
+
 
 function applica(conto, depositi, prelievi) 
 {
@@ -98,5 +121,5 @@ function applica(conto, depositi, prelievi)
             }
         }
     }
-    return false;
+    return true;
 }

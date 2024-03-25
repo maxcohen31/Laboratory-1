@@ -109,7 +109,7 @@ class Autobus extends Veicolo
     #n_porte = 0;
     constructor(targa, colore, n_porte)
     {
-        super(targa, colore, n_porte = 4);
+        super(targa, colore, 4);
         if (this.#n_porte < 0  || typeof this.#n_porte != "number")
         {
             throw new VeicoloError("Wrong input for n_porte");
@@ -135,10 +135,6 @@ class Autobus extends Veicolo
 
     toString()
     {
-        if (this.#n_porte)
-        {
-            return this.toString() + `${this.#n_porte}`; 
-        }
-        return this.toString();
+        return super.toString() + `${this.#n_porte}`; 
     }
 }
