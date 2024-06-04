@@ -26,7 +26,9 @@ function aggiungiabr(T, n)
         {
             T.sx = n;
         }
-
+    }
+    if (n.val > T.val) 
+    { 
         if(T.dx)
         {
             aggiungiabr(T.dx, n)
