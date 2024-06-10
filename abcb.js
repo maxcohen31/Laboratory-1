@@ -36,7 +36,7 @@ function abcb(tree)
         // check if right tree is balanced and it's depth
         let [balanced_dx, height_dx] = full(node.dx, level+1);
         
-        // If both left tree and right tree are balanced and same depth return <true, level>
+        // If both left tree and right tree are balanced and have the same depth return <true, level>
         let is_balanced = balanced_sx && balanced_dx && (height_sx === height_dx);
         let height = 1 + Math.max(height_sx, height_dx);
         return [is_balanced, height];
